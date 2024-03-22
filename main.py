@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.core.window import Window
 from kivy.uix.popup import Popup
+from kivy.graphics import Color, Rectangle
 
 from flames_modules.utils import remainingLetter
 from flames_modules.utils import findRelationLetter
@@ -25,28 +26,24 @@ class Flames(App):
     def on_start(self):
         self.title = 'Flames'
     def build(self):
-        # Create a BoxLayout as the main layout, centered both vertically and horizontally
-        main_layout = BoxLayout(orientation='vertical', size_hint=(None, None), size=(400, 400), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         
-        # Create a GridLayout to hold the elements
-        layout = GridLayout(cols=1, spacing=10, size_hint=(None, None), size=(400, 200))
+        main_layout = BoxLayout(orientation='horizontal',spacing=10)
+        
+        layout = BoxLayout(orientation='vertical',spacing=10,pos_hint={'center_y': 1})
 
-        self.label = Label(text="Find relation between two people (Flames)", font_size=20, size_hint_y=None, height=40)
-        self.name1 = TextInput(size_hint=(None, None), size=(300, 30))
-        self.name2 = TextInput(size_hint=(None, None), size=(300, 30))
+        self.label = Label(text="Find relation between two people (Flames)", font_size=20, height=40,size_hint=(None, None), size=(300, 30),pos_hint={'center_x': 0.5,'center_y': 0.5})
+        self.name1 = TextInput(size_hint=(None, None), size=(300, 30),pos_hint={'center_x': 0.5})
+        self.name2 = TextInput(size_hint=(None, None), size=(300, 30),pos_hint={'center_x': 0.5})
 
-        submit_button = Button(text='Submit', on_press=self.submit_inputs, size_hint=(None, None), size=(150, 30))
+        submit_button = Button(text='Submit', on_press=self.submit_inputs, size_hint=(None, None), size=(150, 30),background_color=(0.2, 0.3, 0.4, 1),pos_hint={'center_x': 0.5,'center_y': 0.5}, padding=(0, 30))
         
         layout.add_widget(self.label)
         layout.add_widget(self.name1)
         layout.add_widget(self.name2)
         layout.add_widget(submit_button)
 
-        # Set GridLayout height to match its content
 
-        # Add GridLayout to the BoxLayout
         main_layout.add_widget(layout)
-
         return main_layout
 
     def submit_inputs(self, instance):
@@ -75,5 +72,4 @@ class Flames(App):
             error_popup.open()
 
 if __name__ == '__main__':
-    Window.size = (600, 300)
     Flames().run()
