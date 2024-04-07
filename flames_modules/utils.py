@@ -1,6 +1,6 @@
 def totalCommonLetters(str1,str2):  #functino return the total number of common letters in two names
-    list1=list(str1)
-    list2=list(str2)
+    list1=list(str1.lower())
+    list2=list(str2.lower())
     arr=[]
     for i in list1:
         for j in list2:
@@ -44,14 +44,24 @@ def findRelationLetter(n):  # the function return the relation letter between tw
 
 def finalRelation(ch):
     if (ch=='F'):
-        return "Your are seems to be friends"
+        return "Its seems your Friends"
     elif (ch=='L'):
-        return "So, You both are lovers!!"
+        return "So, You both are Lovers!!"
     elif (ch=='A'):
-        return "You're affectionate to each other"
+        return "You're Affectionate to each other"
     elif (ch=='M'):
-        return "You're gonna marry each other in future"
+        return "You're gonna Marry each other in future"
     elif (ch=='E'):
         return "OOPS!! You don't like each other, Enemies:("
     else:
-        return "Your both are soulmates, Stayforever"
+        return "Your both are Soulmates, Stayforever"
+    
+def checkString(string): 
+     result=False 
+     for i in string: 
+         if (i>='a' and i<='z') or (i>='A' and i <='Z'): 
+             result=True 
+         else: 
+             result=False 
+             break 
+     return result 
